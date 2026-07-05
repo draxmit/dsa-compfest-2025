@@ -1,0 +1,17 @@
+# Competition dataset — NOT redistributable (DSA Compfest rules)
+data/
+dataset/
+*.csv
+*.parquet
+
+# Jupyter / Python
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Secrets
+.env
+.env.*
+kaggle.json
