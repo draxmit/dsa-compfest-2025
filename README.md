@@ -10,8 +10,6 @@
 - 🏅 **Best Participant** — Data Science track (individual award)
 - 🥇 **1st place — Best Case Study Team** — cross-academy final (PM · UI/UX · DS · SWE)
 
-> **Note:** the qualifier code lives on Kaggle (link below); this repo documents the work and results.
-
 ---
 
 ## The journey
@@ -26,17 +24,24 @@ flowchart LR
 
 ## Part 1 — Kaggle qualifier (5th / 260)
 
-Time-series **electricity-consumption forecasting**. The decisive edge was **feature engineering**, on top
-of a **stacked XGBoost + LightGBM** ensemble tuned with **Optuna**.
+**Task:** forecast daily **`electricity_consumption`** for each of several **clusters** from historical
+usage plus weather/agronomic signals (temperature, evapotranspiration, etc.). **Metric: RMSE.**
 
-- **Models:** XGBoost + LightGBM, stacked; Optuna hyperparameter search.
-- **What moved us up the board:** systematic feature engineering (the single most important factor).
-- **What I'd try next:** deep-learning sequence models (e.g. temporal architectures) beyond GBMs.
+The decisive edge was **feature engineering**, on top of Optuna-tuned gradient boosting:
 
-🔗 **Live notebook:** [kaggle.com/frederickallensius/cupuu-lightgbm-xgboost-with-optuna](https://www.kaggle.com/code/frederickallensius/cupuu-lightgbm-xgboost-with-optuna)
+- **Per-cluster models** (a model trained per `cluster_id`) — which, combined with a targeted
+  post-processing correction, beat a single global model with one-hot clusters on this metric.
+- **Feature engineering:** cyclical time encodings, temporal shifts, log-transforms of skewed columns,
+  "distance-from-minimum" shifting, and **lag & rolling features** (`consumption_lag_1`, `lag_7`,
+  `lag_1_vs_lag_7_diff`, …).
+- **Models:** LightGBM + XGBoost regressors, tuned with **Optuna** (RMSE objective, `random_state=42`).
+- **A competition-specific trick:** the model tended to over-predict peaks, so subtracting a small constant
+  from all predictions lowered peak RMSE more than it cost in the valleys — a leaderboard-driven correction
+  (documented in the notebook as a metric hack, not a production choice).
+- **What I'd try next:** deep-learning sequence models (temporal architectures) beyond GBMs.
 
-<!-- TODO(from Frederick): confirm exact forecast target/horizon, the leaderboard metric (RMSE/MAE/…),
-     and our score vs. the top team, to complete this section. -->
+📓 Notebook: [`notebook/electricity_forecasting.ipynb`](./notebook/electricity_forecasting.ipynb)
+🔗 Also on Kaggle: [frederickallensius/cupuu-lightgbm-xgboost-with-optuna](https://www.kaggle.com/code/frederickallensius/cupuu-lightgbm-xgboost-with-optuna)
 
 ## Part 2 — Data Science Academy → Best Participant
 
@@ -56,7 +61,27 @@ with other DSA participants.
 
 ## Tech stack
 
-`Python` · `XGBoost` · `LightGBM` · `Optuna` · `pandas` · `scikit-learn` · data storytelling / visualization
+`Python` · `LightGBM` · `XGBoost` · `Optuna` · `pandas` · `scikit-learn` · data storytelling / visualization
+
+## Repository structure
+
+```
+dsa-compfest-2025/
+├── notebook/
+│   └── electricity_forecasting.ipynb   # per-cluster GBM forecasting + Optuna + FE
+├── README.md
+└── .gitignore                          # competition dataset excluded (not redistributable)
+```
+
+## How to run
+
+> ⚠️ The competition dataset (`seleksi-dsa-compfest-17`) is **not included** — DSA Compfest rules do not
+> allow redistribution. Place `train.csv` / `test.csv` under a `data/` folder and update the paths.
+
+```bash
+pip install lightgbm xgboost optuna pandas scikit-learn
+jupyter notebook notebook/electricity_forecasting.ipynb
+```
 
 ## Screenshots
 
@@ -64,7 +89,6 @@ with other DSA participants.
 - `TODO:` Kaggle leaderboard (5 / 260)
 - `TODO:` Best Participant certificate
 - `TODO:` 1st-place (Best Case Study Team) certificate / photo
-- `TODO:` a slide or two from the final case-study deck
 
 ---
 
