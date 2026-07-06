@@ -43,17 +43,24 @@ The decisive edge was **feature engineering**, on top of Optuna-tuned gradient b
 📓 Notebook: [`notebook/electricity_forecasting.ipynb`](./notebook/electricity_forecasting.ipynb)
 🔗 Also on Kaggle: [frederickallensius/cupuu-lightgbm-xgboost-with-optuna](https://www.kaggle.com/code/frederickallensius/cupuu-lightgbm-xgboost-with-optuna)
 
+![Private leaderboard — team cupuu finished 5th](docs/leaderboard.png)
+> Private leaderboard for *Seleksi Data Science Academy COMPFEST 17* — team **cupuu** placed **5th** (score 34.28).
+
 ## Part 2 — Data Science Academy → Best Participant
 
 Selected from the qualifier into the Academy; named **Best Participant** in the Data Science track (top
 individual in the DS cohort).
 
+![Best Participant — Frederick Allensius](docs/best-participant.jpg)
+
 ## Part 3 — Cross-academy final → 1st place (Best Case Study Team)
 
 Compfest teams up its academies (Product Management, UI/UX, Data Science, Software Engineering) for a
-final build. My team produced a **data-driven solution for unemployment** and won **1st place
-(Best Case Study Team)**. My contribution was the **data analysis and visualization**, done collaboratively
-with other DSA participants.
+final build. My team — **"Fresh Money"** — produced a **data-driven solution for unemployment** and won
+**1st place (Best Case Study Team)**. My contribution was the **data analysis and visualization**, done
+collaboratively with other DSA participants.
+
+![Best Case Study Team — team Fresh Money on stage](docs/best-case-study-team.jpg)
 
 🔗 **Final presentation (Canva):** [link](https://www.canva.com/design/DAGyjDeeeFQ/2y_4P-01F0ShXgC1pMEwng/edit)
 
@@ -82,13 +89,6 @@ dsa-compfest-2025/
 pip install lightgbm xgboost optuna pandas scikit-learn
 jupyter notebook notebook/electricity_forecasting.ipynb
 ```
-
-## Screenshots
-
-<!-- TODO: add screenshots -->
-- `TODO:` Kaggle leaderboard (5 / 260)
-- `TODO:` Best Participant certificate
-- `TODO:` 1st-place (Best Case Study Team) certificate / photo
 
 ---
 
