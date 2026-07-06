@@ -62,8 +62,6 @@ collaboratively with other DSA participants.
 
 ![Best Case Study Team — team Fresh Money on stage](docs/best-case-study-team.jpg)
 
-🔗 **Final presentation (Canva):** [link](https://www.canva.com/design/DAGyjDeeeFQ/2y_4P-01F0ShXgC1pMEwng/edit)
-
 ---
 
 ## Tech stack
